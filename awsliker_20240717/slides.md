@@ -93,7 +93,7 @@ dragPos:
 ### 各種アカウント
 @orangekame3 - GitHub, Twitter
 
-<img v-drag="'square'" src="orangekame3.jpg">
+<img v-drag="'square'" src="/orangekame3.jpg">
 
 ---
 dragPos:
@@ -112,10 +112,10 @@ dragPos:
 - **[mk](https://github.com/orangekame3/mk)** - Makfieleベースのインタラクティブタスクランナー
 - **[stree](https://github.com/orangekame3/stree)**　- S3バケットをtreeしたい！←ほんじつのテーマ
 
-<img v-drag="'tftarget'" src="tftarget.gif">
-<img v-drag="'paclear'" src="paclear.gif">
-<img v-drag="'ghfetch'" src="ghfetch.gif">
-<img v-drag="'mk'" src="mk.gif">
+<img v-drag="'tftarget'" src="/tftarget.gif">
+<img v-drag="'paclear'" src="/paclear.gif">
+<img v-drag="'ghfetch'" src="/ghfetch.gif">
+<img v-drag="'mk'" src="/mk.gif">
 
 ---
 layout: cover
@@ -393,8 +393,8 @@ https://github.com/orangekame3/stree
 - prefix対応
 - Go製(シングルバイナリ brew経由でinstall可能)
 
-<img v-drag="'stree-logo'" src="stree.png"/>
-<img v-drag="'stree'" src="stree.gif"/>
+<img v-drag="'stree-logo'" src="/stree.png"/>
+<img v-drag="'stree'" src="/stree.gif"/>
 
 ---
 ---
@@ -561,7 +561,7 @@ stree awsliker-0717 -p orangekame3 -m
 
 https://github.com/orangekame3/stree/pull/25
 
-<img v-drag="'mfa-pr'" src="mfa-pr.png"/>
+<img v-drag="'mfa-pr'" src="/mfa-pr.png"/>
 
 このMFAの実装はgtree作者の方にPRを頂きました
 
@@ -615,7 +615,7 @@ dragPos:
 - [Community | AWS open source newsletter, #189](https://community.aws/content/2cXuki31b6cvPtkoOMdNNxfLKfr/aws-open-source-newsletter-189)
 - [stree - A simple directory tree command for listing AWS S3 bucket](https://terminaltrove.com/stree/)
 
-<img v-drag="'article'" src="article.png"/>
+<img v-drag="'article'" src="/article.png"/>
 
 ---
 ---

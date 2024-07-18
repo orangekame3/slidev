@@ -30,6 +30,10 @@ jobs:
           }
           NAME=$(_jq '.name')
           echo "Processing $NAME"
+          
+          # Checkout the specific directory
+          git checkout -f main -- $NAME
+
           cd $NAME
           npm install
           npx slidev build
