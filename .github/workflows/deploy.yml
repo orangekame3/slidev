@@ -1,0 +1,58 @@
+name: Deploy Slidev to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+    - name: Install dependencies and build
+      run: |
+        config=$(cat deploy-config.json)
+        for entry in $(echo "$config" | jq -r '.deploy[] | @base64'); do
+          _jq() {
+            echo ${entry} | base64 --decode | jq -r ${1}
+          }
+          NAME=$(_jq '.name')
+          echo "Processing $NAME"
+          cd $NAME
+          npm install
+          npx slidev build
+          cd ..
+        done
+
+    - name: Copy build results
+      run: |
+        mkdir -p $GITHUB_WORKSPACE/deploy
+        config=$(cat deploy-config.json)
+        for entry in $(echo "$config" | jq -r '.deploy[] | @base64'); do
+          _jq() {
+            echo ${entry} | base64 --decode | jq -r ${1}
+          }
+          NAME=$(_jq '.name')
+          echo "Copying $NAME to deploy directory"
+          mkdir -p $GITHUB_WORKSPACE/deploy/$NAME
+          cp -r $NAME/dist/* $GITHUB_WORKSPACE/deploy/$NAME
+        done
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./deploy
+        publish_branch: gh-pages
